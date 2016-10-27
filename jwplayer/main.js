@@ -31,10 +31,6 @@ player.setup({
             "kind":"captions",
             "lable":"index"
         }],
-        //分享
-        "sharing": {
-            "sites": ["reddit","facebook","twitter"]
-        },
         "image": "jwplayer/video/1.jpg",//海报
         "title": "我的第一个jwplayer视频",
         "description":"第一个视频描述",
@@ -49,8 +45,6 @@ player.setup({
 
 
 });
-
-
 
 
 // cookie  视频断点

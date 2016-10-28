@@ -4,47 +4,117 @@
 var player = jwplayer("player");
 player.setup({
     // file: 'http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4',
-    // image: 'jwplayer/video/temp.jpg',
-    logo: {
-        file: 'jwplayer/video/logo.png',
-        link: 'http://www.alvye.cn/'
+    "image": 'jwplayer/video/temp.jpg',
+    "logo": {
+        file: 'jwplayer/video/logo2.png',
+        link: 'http://www.alvye.cn/',
+        position: 'top-left',
     },
-    height:650,
-    width: 1200,//可为百分比 "100%"，
-    stretching:"fill",
-
-    "playlist": [{
+    "height": 650,
+    "width": 1200,//可为百分比 "100%"，
+    "stretching": "uniform",
+    "abouttext": "关于旅烨",
+    "aboutlink": "http://www.alvye.cn/",
+    // skin: {
+    //     name: "glow"
+    // }
+    "playlist": [{//*****************第一个视频**********************************************
         //文件路径
         // "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
-        "sources": [{
-            "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4", //优先播放，第一选择
-            "label": "HD"    //质量切换
-        },{
-            "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.w3u8",
-            "label": "SD"
-        },{
-            "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.webm"
-        }],
+        "sources": [
+            {
+                "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
+                "mediaTypes": [
+                    "video/webm; codecs=\"vp9\"",
+                    "audio/webm; codecs=\"vorbis\""
+                ],
+                "type": "application/dash+xml",
+            },
+            {
+                "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
+                "type": "hls",
+            },
+            {
+                "duration": 33,
+                "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
+                "height": 180,
+                "label": "320px",
+                "type": "video/mp4",
+                "width": 320
+            },
+            {
+                "duration": 33,
+                "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
+                "height": 270,
+                "label": "480px",
+                "type": "video/mp4",
+                "width": 480
+            },
+            {
+                "duration": 33,
+                "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
+                "height": 406,
+                "label": "720px",
+                "type": "video/mp4",
+                "width": 720
+            },
+            {
+                "duration": 33,
+                "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
+                "height": -1,
+                "label": "Audio",
+                "type": "audio/mp4",
+                "width": -1
+            }
+        ],
+        "related": {
+            "file":"jwplayer/video/video.mp4"
+        },
         //字幕
-        "tracks":[{
-            "file":"jwplayer/zimu/zimu.srt",
-            "kind":"captions",
-            "lable":"index"
-        }],
+        "tracks": [
+            {
+                "file": "jwplayer/zimu/zimu.srt",
+                "kind": "captions",
+                "label": "字幕",
+                "default":"haha"
+            },
+            {
+                "file": "//content.jwplatform.com/strips/1g8jjku3-120.vtt",
+                "kind": "thumbnails"
+            }
+        ],
         "image": "jwplayer/video/1.jpg",//海报
         "title": "我的第一个jwplayer视频",
         "description":"第一个视频描述",
         "mediaid": "ddra573"
-    },{
-        "file": "jwplayer/video/video.mp4",
+    },{  //*****************第二个视频**********************************************
+        "file": "//content.jwplatform.com/videos/QlfSn2u6-FctPAkow.mp4",
         "image": "jwplayer/video/4.jpg",
         "title": "这是第二个jwplayer视频",
         "description":"第二个视频描述",
+        "tracks": [
+            {
+                "file": "//assets-jpcust.jwpsrv.com/tracks/Up7DJauf.vtt",
+                "kind": "captions",
+                "label": "big-buck.vtt"
+            },
+            {
+                "file": "//content.jwplatform.com/strips/1g8jjku3-120.vtt",
+                "kind": "thumbnails"
+            }
+        ],
         "mediaid": "ddrx3v2"
-    }]
-
-
+    }],
+    key:"tbNk1wd503FIee9wemRnCvaw7faBJzVoPSgAEw=="
 });
+
+player.on('play',function () {
+    console.log("视频播放")
+})
+
+player.on('pause',function () {
+    console.log("视频暂停")
+})
 
 
 // cookie  视频断点
@@ -70,9 +140,9 @@ player.on('ready', function() {
 
     // addButton 下载按钮
     player.addButton(
-        //This portion is what designates the graphic used for the button
-        "//icons.jwplayer.com/icons/white/download.svg",
-        //This portion determines the text that appears as a tooltip
+        //图片路径
+        "jwplayer/video/download.svg",
+        //文本提示
         "Download Video",
         //This portion designates the functionality of the button itself
         function() {
@@ -83,6 +153,15 @@ player.on('ready', function() {
         "download"
     );
 
+    //字幕样式设置
+     jwplayer().setCaptions({
+        "color":"#cccccc",
+        "backgroundColor": "#2BBECF",
+        "backgroundOpacity":"0",
+        "windowOpacity":"0",
+        "windowColor":"#ffffff"
+     });
 
 
     });
+

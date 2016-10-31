@@ -12,13 +12,18 @@ player.setup({
     },
     "height": 650,
     "width": 1200,//可为百分比 "100%"，
-    "stretching": "uniform",
+    "stretching": "fill",//uniform,fill,none
     "abouttext": "关于旅烨",
     "aboutlink": "http://www.alvye.cn/",
+
     // skin: {
-    //     name: "glow"
-    // }
-    "playlist": [{//*****************第一个视频**********************************************
+    //     name: "roundster"  // beelden，bekle，five，glow，roundster，seven，six，stormtrooper，vapor
+    //  },
+    "flashplayer": "https://<your_CDN_ID>.cloudfront.net/assets/jwplayer.flash.swf",
+    "html5player": "https://<your_CDN_ID>.cloudfront.net/assets/jwplayer.html5.js",
+    "primary": "html5",
+
+    "playlist": [{ //*****************第一个视频**********************************************
         //文件路径
         // "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
         "sources": [
@@ -35,7 +40,7 @@ player.setup({
                 "type": "hls",
             },
             {
-                "duration": 33,
+                "duration": 203,
                 "file": "http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4",
                 "height": 180,
                 "label": "320px",
